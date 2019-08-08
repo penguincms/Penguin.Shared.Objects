@@ -1,0 +1,184 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Penguin.Shared.Objects</name>
+    </assembly>
+    <members>
+        <member name="M:Penguin.Shared.Objects.Extensions.IEnumerableExtensions.ToTree(System.Collections.Generic.IEnumerable{System.String},System.Char,System.StringComparer)">
+            <summary>
+            Converts an IEnumerable of strings to a tree node structure
+            </summary>
+            <param name="target">The target IEnumerable</param>
+            <param name="Delimeter">The delimiter to use for nodes in the path</param>
+            <param name="comparer">The string comparer to use when testing the path for equality</param>
+            <returns>A tree node structure of the original IEnumerable</returns>
+        </member>
+        <member name="M:Penguin.Shared.Objects.Extensions.IEnumerableExtensions.ToTree``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.String},System.Char,System.StringComparer)">
+            <summary>
+            Converts a generic object IEnumerable to a tree node structure
+            </summary>
+            <typeparam name="T">Any reference type</typeparam>
+            <param name="target">The IEnumerable to convert</param>
+            <param name="Path">A function that acts on the object to return a representation of its path in the tree</param>
+            <param name="Delimeter">The delimiter to use for nodes in the path</param>
+            <param name="comparer">The string comparer to use when testing the path for equality</param>
+            <returns>A tree node structure of the original IEnumerable</returns>
+        </member>
+        <member name="M:Penguin.Shared.Objects.Extensions.IRecursiveListExtensions.Flatten``1(``0)">
+            <summary>
+            Flattens an IRecursive list
+            </summary>
+            <typeparam name="T">Any type</typeparam>
+            <param name="target">The list to flatten</param>
+            <returns>A flattened representation of the target recursive tree</returns>
+        </member>
+        <member name="T:Penguin.Shared.Objects.Interfaces.IRecursiveList`1">
+            <summary>
+            An interface to denote a recursive One-To-Many object structure
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Penguin.Shared.Objects.Interfaces.IRecursiveList`1.Children">
+            <summary>
+            The child objects of the parent type
+            </summary>
+        </member>
+        <member name="P:Penguin.Shared.Objects.Interfaces.IRecursiveList`1.Parent">
+            <summary>
+            The optional parent of this node
+            </summary>
+        </member>
+        <member name="T:Penguin.Shared.Objects.TFE">
+            <summary>
+            A simple True/False/Error object
+            </summary>
+        </member>
+        <member name="T:Penguin.Shared.Objects.TreeNode`1">
+            <summary>
+            A recursive object used to build out a tree of objects based on a string representation of the object path
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Penguin.Shared.Objects.TreeNode`1.Children">
+            <summary>
+            The nodes that reside beneath this node
+            </summary>
+        </member>
+        <member name="P:Penguin.Shared.Objects.TreeNode`1.Delimiter">
+            <summary>
+            The character used to delimit nodes on the path
+            </summary>
+        </member>
+        <member name="P:Penguin.Shared.Objects.TreeNode`1.FullName">
+            <summary>
+            The full path of this node
+            </summary>
+        </member>
+        <member name="P:Penguin.Shared.Objects.TreeNode`1.HasChildren">
+            <summary>
+            Whether or not this node has children
+            </summary>
+        </member>
+        <member name="P:Penguin.Shared.Objects.TreeNode`1.IsReal">
+            <summary>
+            If false, this nodes existence was inferred from child paths and not part of the passed in list of paths used to
+            create the tree
+            </summary>
+        </member>
+        <member name="P:Penguin.Shared.Objects.TreeNode`1.Name">
+            <summary>
+            The last segment of the path representing the name of this node
+            </summary>
+        </member>
+        <member name="P:Penguin.Shared.Objects.TreeNode`1.Parent">
+            <summary>
+            The parent node up one level
+            </summary>
+        </member>
+        <member name="P:Penguin.Shared.Objects.TreeNode`1.Path">
+            <summary>
+            The path to this node not including the name of this node.
+            </summary>
+        </member>
+        <member name="P:Penguin.Shared.Objects.TreeNode`1.Value">
+            <summary>
+            The object that resides at this level of the tree
+            </summary>
+        </member>
+        <member name="M:Penguin.Shared.Objects.TreeNode`1.GetChildByFullName(System.String)">
+            <summary>
+            Gets a child node recursively by full name. 
+            </summary>
+            <param name="FullName">The full name of the node to return</param>
+            <returns>The first node matching the full name, or null</returns>
+        </member>
+        <member name="M:Penguin.Shared.Objects.TreeNode`1.GetChildByValue(`0)">
+            <summary>
+            Gets a child node recursively by value using the default comparer
+            </summary>
+            <param name="value">The value of the node to return</param>
+            <returns>The first node matching the value, or null</returns>
+        </member>
+        <member name="P:Penguin.Shared.Objects.TreeNode`1.Item(System.String)">
+            <summary>
+            Searches the downline of this node and returns a child node with a matching full name
+            </summary>
+            <param name="FullName">The full name to search for</param>
+            <returns>A child node with the matching name, or null if none is found</returns>
+        </member>
+        <member name="M:Penguin.Shared.Objects.TreeNode`1.#ctor(`0,System.Func{`0,System.String},System.Char)">
+            <summary>
+            Creates a new tree node
+            </summary>
+            <param name="value">The object held by the node</param>
+            <param name="PathFunction">A func used to return the path of this node on the tree</param>
+            <param name="delimeter">The character used to delimit the nodes in the path (ex "C:\Program Files\My Application" == '\')</param>
+        </member>
+        <member name="M:Penguin.Shared.Objects.TreeNode`1.#ctor(System.String,System.Char)">
+            <summary>
+            Creates a new tree node
+            </summary>
+            <param name="path">The path of this node</param>
+            <param name="delimeter">The character used to delimit the nodes in the path (ex "C:\Program Files\My Application" == '\')</param>
+        </member>
+        <member name="M:Penguin.Shared.Objects.TreeNode`1.#ctor(`0,System.String,System.Char)">
+            <summary>
+            Creates a new tree node
+            </summary>
+            <param name="value">The object held by the node</param>
+            <param name="path">The path of this node</param>
+            <param name="delimeter">The character used to delimit the nodes in the path (ex "C:\Program Files\My Application" == '\')</param>
+        </member>
+        <member name="M:Penguin.Shared.Objects.TreeNode`1.AddChild(Penguin.Shared.Objects.TreeNode{`0})">
+            <summary>
+            Adds a leaf to this node
+            </summary>
+            <param name="thisNode">The node to add as a leaf</param>
+        </member>
+        <member name="M:Penguin.Shared.Objects.TreeNode`1.FindNode(System.String)">
+            <summary>
+            Finds a node in the current nodes downline, based on the path of the node
+            </summary>
+            <param name="Path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Penguin.Shared.Objects.TreeNode`1.RemoveChild(Penguin.Shared.Objects.TreeNode{`0})">
+            <summary>
+            Removed a child leaf from this node
+            </summary>
+            <param name="thisNode">The node to remove</param>
+        </member>
+        <member name="M:Penguin.Shared.Objects.TreeNode`1.GetBranch">
+            <summary>
+            Returns a list of treenodes leading to this node, from trunk to leaf
+            </summary>
+            <returns>A list of treenodes leading to this node, from trunk to leaf</returns>
+        </member>
+        <member name="M:Penguin.Shared.Objects.TreeNode`1.ToString">
+            <summary>
+            Returns the full path of this tree node
+            </summary>
+            <returns>The full path of this tree node</returns>
+        </member>
+    </members>
+</doc>
