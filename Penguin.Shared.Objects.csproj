@@ -1,38 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
+  <Import Project="Penguin.Projects.Shared\Penguin.Projects.Shared.csproj" />
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageLicenseFile>License.txt</PackageLicenseFile>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 	<PackageProjectUrl>https://github.com/penguincms/Penguin.Shared.Objects</PackageProjectUrl>
-	<PackageIconUrl>http://www.penguinms.com/client/images/pg.png</PackageIconUrl>
-    <Version>1.1.10</Version>
-	<IncludeSymbols>true</IncludeSymbols>    
-<SymbolPackageFormat>snupkg</SymbolPackageFormat>
-
+    <Version>2.0.0</Version>
 	<Description>A few Penguin objects, most notibly a TreeNode object that parses and "leafs" IEnumerables of objects based on a user-defined string produced by a func. Useful for turning lists of paths into navigatable tree structures. This allows for removing recursive key references on data tables simplifying data schema</Description>
-  </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <WarningsAsErrors>NU1605, CS1591</WarningsAsErrors>
-    <DocumentationFile>Penguin.Shared.Objects.xml</DocumentationFile>
-  </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-	<DebugType>full</DebugType>
-      <DocumentationFile>Penguin.Shared.Objects.xml</DocumentationFile>
-    </PropertyGroup>
-  
+  </PropertyGroup>  
   <ItemGroup>
-    <PackageReference Include="Penguin.Extensions.String" Version="2.0.2" />
+    <PackageReference Include="Penguin.Extensions.String" Version="3.0.0" />
   </ItemGroup>
-
-  <ItemGroup>
-    <None Include="License.txt">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
-
 </Project>
