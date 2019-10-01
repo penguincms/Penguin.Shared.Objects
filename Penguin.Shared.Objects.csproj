@@ -2,7 +2,7 @@
   <Import Project="Penguin.Projects.Shared\Penguin.Projects.Shared.csproj" />
   <PropertyGroup>
 	<PackageProjectUrl>https://github.com/penguincms/Penguin.Shared.Objects</PackageProjectUrl>
-    <Version>2.0.0</Version>
+    <Version>2.0.1</Version>
 	<Description>A few Penguin objects, most notibly a TreeNode object that parses and "leafs" IEnumerables of objects based on a user-defined string produced by a func. Useful for turning lists of paths into navigatable tree structures. This allows for removing recursive key references on data tables simplifying data schema</Description>
   </PropertyGroup>  
   <ItemGroup>

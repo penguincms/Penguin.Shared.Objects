@@ -13,12 +13,12 @@ namespace Penguin.Shared.Objects.Interfaces
         /// <summary>
         /// The child objects of the parent type
         /// </summary>
-        List<T> Children { get; set; }
+        IList<T> Children { get; }
 
         /// <summary>
         /// The optional parent of this node
         /// </summary>
-        T Parent { get; set; }
+        T Parent { get; }
 
         #endregion Properties
     }
