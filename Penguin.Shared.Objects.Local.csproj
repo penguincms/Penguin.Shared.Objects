@@ -7,6 +7,6 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Penguin.Extensions.String\Penguin.Extensions.String.csproj" />
+    <ProjectReference Include="..\Penguin.Extensions.String\Penguin.Extensions.String.Local.csproj" />
   </ItemGroup>
 </Project>
