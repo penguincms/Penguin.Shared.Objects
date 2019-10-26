@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>Penguin.Shared.Objects.Local</name>
+        <name>Penguin.Shared.Objects</name>
     </assembly>
     <members>
         <member name="M:Penguin.Shared.Objects.Extensions.IEnumerableExtensions.ToTree(System.Collections.Generic.IEnumerable{System.String},System.Char,System.StringComparer)">
