@@ -7,6 +7,6 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Penguin.Extensions.String" Version="3.0.2-63707653241" />
+    <PackageReference Include="Penguin.Extensions.String" Version="3.0.2-T9LXGUJ" />
   </ItemGroup>
 </Project>
