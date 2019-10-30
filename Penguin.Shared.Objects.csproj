@@ -5,8 +5,10 @@
     <Version>2.0.1</Version>
     <Description>A few Penguin objects, most notibly a TreeNode object that parses and "leafs" IEnumerables of objects based on a user-defined string produced by a func. Useful for turning lists of paths into navigatable tree structures. This allows for removing recursive key references on data tables simplifying data schema</Description>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Penguin.Shared.Objects</AssemblyName>
+    <RootNamespace>Penguin.Shared.Objects</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Penguin.Extensions.String" Version="3.0.3-T9M1HHH" />
+    <PackageReference Include="Penguin.Extensions.String" Version="3.0.3-T9M2XAX" />
   </ItemGroup>
 </Project>
