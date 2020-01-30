@@ -7,6 +7,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Penguin.Shared.Objects</AssemblyName>
     <RootNamespace>Penguin.Shared.Objects</RootNamespace>
+    <DocumentationFile>Penguin.Shared.Objects.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Penguin.Extensions.String" Version="3.0.3-T9QC72V" />
