@@ -107,7 +107,7 @@
         </member>
         <member name="M:Penguin.Shared.Objects.TreeNode`1.GetChildByFullName(System.String)">
             <summary>
-            Gets a child node recursively by full name. 
+            Gets a child node recursively by full name.
             </summary>
             <param name="FullName">The full name of the node to return</param>
             <returns>The first node matching the full name, or null</returns>

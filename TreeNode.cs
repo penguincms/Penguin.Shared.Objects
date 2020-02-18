@@ -64,73 +64,6 @@ namespace Penguin.Shared.Objects
         #region Constructors
 
         /// <summary>
-        /// Gets a child node recursively by full name. 
-        /// </summary>
-        /// <param name="FullName">The full name of the node to return</param>
-        /// <returns>The first node matching the full name, or null</returns>
-        public TreeNode<T> GetChildByFullName(string FullName)
-        {
-            TreeNode<T> found = this.Children.SingleOrDefault(t => t.FullName == FullName);
-
-            if (found != null)
-            {
-                return found;
-            }
-
-            for (int i = 0; i < this.Children.Count; i++)
-            {
-                found = this.Children[i][FullName];
-
-                if (found != null)
-                {
-                    return found;
-                }
-            }
-
-            return null;
-        }
-
-        /// <summary>
-        /// Gets a child node recursively by value using the default comparer
-        /// </summary>
-        /// <param name="value">The value of the node to return</param>
-        /// <returns>The first node matching the value, or null</returns>
-        public TreeNode<T> GetChildByValue(T value)
-        {
-            TreeNode<T> found = this.Children.SingleOrDefault(t => t.Value == value);
-
-            if (found != null)
-            {
-                return found;
-            }
-
-            for (int i = 0; i < this.Children.Count; i++)
-            {
-                found = this.Children[i].GetChildByValue(value);
-
-                if (found != null)
-                {
-                    return found;
-                }
-            }
-
-            return null;
-        }
-
-        /// <summary>
-        /// Searches the downline of this node and returns a child node with a matching full name
-        /// </summary>
-        /// <param name="FullName">The full name to search for</param>
-        /// <returns>A child node with the matching name, or null if none is found</returns>
-        public TreeNode<T> this[string FullName]
-        {
-            get
-            {
-                return GetChildByFullName(FullName);
-            }
-        }
-
-        /// <summary>
         /// Creates a new tree node
         /// </summary>
         /// <param name="value">The object held by the node</param>
@@ -188,6 +121,73 @@ namespace Penguin.Shared.Objects
             this.Children = new List<TreeNode<T>>();
         }
 
+        /// <summary>
+        /// Searches the downline of this node and returns a child node with a matching full name
+        /// </summary>
+        /// <param name="FullName">The full name to search for</param>
+        /// <returns>A child node with the matching name, or null if none is found</returns>
+        public TreeNode<T> this[string FullName]
+        {
+            get
+            {
+                return GetChildByFullName(FullName);
+            }
+        }
+
+        /// <summary>
+        /// Gets a child node recursively by full name.
+        /// </summary>
+        /// <param name="FullName">The full name of the node to return</param>
+        /// <returns>The first node matching the full name, or null</returns>
+        public TreeNode<T> GetChildByFullName(string FullName)
+        {
+            TreeNode<T> found = this.Children.SingleOrDefault(t => t.FullName == FullName);
+
+            if (found != null)
+            {
+                return found;
+            }
+
+            for (int i = 0; i < this.Children.Count; i++)
+            {
+                found = this.Children[i][FullName];
+
+                if (found != null)
+                {
+                    return found;
+                }
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Gets a child node recursively by value using the default comparer
+        /// </summary>
+        /// <param name="value">The value of the node to return</param>
+        /// <returns>The first node matching the value, or null</returns>
+        public TreeNode<T> GetChildByValue(T value)
+        {
+            TreeNode<T> found = this.Children.SingleOrDefault(t => t.Value == value);
+
+            if (found != null)
+            {
+                return found;
+            }
+
+            for (int i = 0; i < this.Children.Count; i++)
+            {
+                found = this.Children[i].GetChildByValue(value);
+
+                if (found != null)
+                {
+                    return found;
+                }
+            }
+
+            return null;
+        }
+
         #endregion Constructors
 
         #region Methods
@@ -225,16 +225,6 @@ namespace Penguin.Shared.Objects
         }
 
         /// <summary>
-        /// Removed a child leaf from this node
-        /// </summary>
-        /// <param name="thisNode">The node to remove</param>
-        public void RemoveChild(TreeNode<T> thisNode)
-        {
-            this.Children.Remove(thisNode);
-            thisNode.Parent = null;
-        }
-
-        /// <summary>
         /// Returns a list of treenodes leading to this node, from trunk to leaf
         /// </summary>
         /// <returns>A list of treenodes leading to this node, from trunk to leaf</returns>
@@ -253,6 +243,16 @@ namespace Penguin.Shared.Objects
             treeNodes.Reverse();
 
             return treeNodes;
+        }
+
+        /// <summary>
+        /// Removed a child leaf from this node
+        /// </summary>
+        /// <param name="thisNode">The node to remove</param>
+        public void RemoveChild(TreeNode<T> thisNode)
+        {
+            this.Children.Remove(thisNode);
+            thisNode.Parent = null;
         }
 
         /// <summary>
