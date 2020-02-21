@@ -10,6 +10,6 @@
     <DocumentationFile>Penguin.Shared.Objects.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Penguin.Extensions.String" Version="3.0.3-T9QUIQ4" />
+    <PackageReference Include="Penguin.Extensions.String" Version="3.0.3-T9RVMZA" />
   </ItemGroup>
 </Project>

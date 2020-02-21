@@ -105,27 +105,6 @@
             The object that resides at this level of the tree
             </summary>
         </member>
-        <member name="M:Penguin.Shared.Objects.TreeNode`1.GetChildByFullName(System.String)">
-            <summary>
-            Gets a child node recursively by full name.
-            </summary>
-            <param name="FullName">The full name of the node to return</param>
-            <returns>The first node matching the full name, or null</returns>
-        </member>
-        <member name="M:Penguin.Shared.Objects.TreeNode`1.GetChildByValue(`0)">
-            <summary>
-            Gets a child node recursively by value using the default comparer
-            </summary>
-            <param name="value">The value of the node to return</param>
-            <returns>The first node matching the value, or null</returns>
-        </member>
-        <member name="P:Penguin.Shared.Objects.TreeNode`1.Item(System.String)">
-            <summary>
-            Searches the downline of this node and returns a child node with a matching full name
-            </summary>
-            <param name="FullName">The full name to search for</param>
-            <returns>A child node with the matching name, or null if none is found</returns>
-        </member>
         <member name="M:Penguin.Shared.Objects.TreeNode`1.#ctor(`0,System.Func{`0,System.String},System.Char)">
             <summary>
             Creates a new tree node
@@ -149,6 +128,27 @@
             <param name="path">The path of this node</param>
             <param name="delimeter">The character used to delimit the nodes in the path (ex "C:\Program Files\My Application" == '\')</param>
         </member>
+        <member name="P:Penguin.Shared.Objects.TreeNode`1.Item(System.String)">
+            <summary>
+            Searches the downline of this node and returns a child node with a matching full name
+            </summary>
+            <param name="FullName">The full name to search for</param>
+            <returns>A child node with the matching name, or null if none is found</returns>
+        </member>
+        <member name="M:Penguin.Shared.Objects.TreeNode`1.GetChildByFullName(System.String)">
+            <summary>
+            Gets a child node recursively by full name.
+            </summary>
+            <param name="FullName">The full name of the node to return</param>
+            <returns>The first node matching the full name, or null</returns>
+        </member>
+        <member name="M:Penguin.Shared.Objects.TreeNode`1.GetChildByValue(`0)">
+            <summary>
+            Gets a child node recursively by value using the default comparer
+            </summary>
+            <param name="value">The value of the node to return</param>
+            <returns>The first node matching the value, or null</returns>
+        </member>
         <member name="M:Penguin.Shared.Objects.TreeNode`1.AddChild(Penguin.Shared.Objects.TreeNode{`0})">
             <summary>
             Adds a leaf to this node
@@ -162,17 +162,17 @@
             <param name="Path"></param>
             <returns></returns>
         </member>
-        <member name="M:Penguin.Shared.Objects.TreeNode`1.RemoveChild(Penguin.Shared.Objects.TreeNode{`0})">
-            <summary>
-            Removed a child leaf from this node
-            </summary>
-            <param name="thisNode">The node to remove</param>
-        </member>
         <member name="M:Penguin.Shared.Objects.TreeNode`1.GetBranch">
             <summary>
             Returns a list of treenodes leading to this node, from trunk to leaf
             </summary>
             <returns>A list of treenodes leading to this node, from trunk to leaf</returns>
+        </member>
+        <member name="M:Penguin.Shared.Objects.TreeNode`1.RemoveChild(Penguin.Shared.Objects.TreeNode{`0})">
+            <summary>
+            Removed a child leaf from this node
+            </summary>
+            <param name="thisNode">The node to remove</param>
         </member>
         <member name="M:Penguin.Shared.Objects.TreeNode`1.ToString">
             <summary>
