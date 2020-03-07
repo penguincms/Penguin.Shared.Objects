@@ -16,7 +16,10 @@ namespace Penguin.Shared.Objects.Extensions
         /// <param name="Delimeter">The delimiter to use for nodes in the path</param>
         /// <param name="comparer">The string comparer to use when testing the path for equality</param>
         /// <returns>A tree node structure of the original IEnumerable</returns>
-        public static TreeNode<string> ToTree(this IEnumerable<string> target, char Delimeter = '\\', StringComparer comparer = null) => ToTree(target, (s) => s, Delimeter, comparer);
+        public static TreeNode<string> ToTree(this IEnumerable<string> target, char Delimeter = '\\', StringComparer comparer = null)
+        {
+            return ToTree(target, (s) => s, Delimeter, comparer);
+        }
 
         /// <summary>
         /// Converts a generic object IEnumerable to a tree node structure
@@ -29,9 +32,9 @@ namespace Penguin.Shared.Objects.Extensions
         /// <returns>A tree node structure of the original IEnumerable</returns>
         public static TreeNode<T> ToTree<T>(this IEnumerable<T> target, Func<T, string> Path, char Delimeter = '\\', StringComparer comparer = null) where T : class
         {
-            if (target.Count() == 0)
+            if (!target.Any())
             {
-                TreeNode<T> root = new TreeNode<T>(Delimeter.ToString(), Delimeter);
+                TreeNode<T> root = new TreeNode<T>($"{Delimeter}", Delimeter);
                 return root;
             }
 
@@ -63,13 +66,13 @@ namespace Penguin.Shared.Objects.Extensions
 
             foreach (TreeNode<T> thisNode in working.Select(t => t.Value))
             {
-                if (thisNode.Path != string.Empty)
+                if (!string.IsNullOrEmpty(thisNode.Path))
                 {
                     working[thisNode.Path].AddChild(thisNode);
                 }
             }
 
-            return working.First(t => t.Value.Path == string.Empty).Value;
+            return working.First(t => string.IsNullOrEmpty(t.Value.Path)).Value;
         }
     }
 }

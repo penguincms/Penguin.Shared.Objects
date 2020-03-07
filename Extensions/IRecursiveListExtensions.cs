@@ -23,7 +23,7 @@ namespace Penguin.Shared.Objects.Extensions
 
             yield return target;
 
-            while (i < toReturn.Count())
+            while (i < toReturn.Count)
             {
                 foreach (T item in toReturn.ElementAt(i++).Children)
                 {

@@ -90,31 +90,36 @@ namespace Penguin.Shared.Objects
         /// <param name="delimeter">The character used to delimit the nodes in the path (ex "C:\Program Files\My Application" == '\')</param>
         public TreeNode(T value, string path, char delimeter = '\\')
         {
+            if (path is null)
+            {
+                throw new ArgumentNullException(nameof(path));
+            }
+
             this.Value = value;
 
             this.FullName = delimeter + path.Trim(delimeter);
             this.Delimiter = delimeter;
 
-            if (this.FullName == delimeter.ToString())
+            if (this.FullName == $"{delimeter}")
             {
                 this.Path = string.Empty;
-                this.Name = delimeter.ToString();
+                this.Name = $"{delimeter}";
                 this.FullName = this.Name;
             }
             else if (this.FullName.Contains(delimeter))
             {
                 this.Path = this.FullName.ToLast(delimeter);
 
-                if (this.Path == string.Empty)
+                if (string.IsNullOrEmpty(this.Path))
                 {
-                    this.Path = delimeter.ToString();
+                    this.Path = $"{delimeter}";
                 }
 
                 this.Name = this.FullName.FromLast(delimeter);
             }
             else
             {
-                this.Path = delimeter.ToString();
+                this.Path = $"{delimeter}";
                 this.Name = this.FullName;
             }
 
@@ -126,13 +131,7 @@ namespace Penguin.Shared.Objects
         /// </summary>
         /// <param name="FullName">The full name to search for</param>
         /// <returns>A child node with the matching name, or null if none is found</returns>
-        public TreeNode<T> this[string FullName]
-        {
-            get
-            {
-                return GetChildByFullName(FullName);
-            }
-        }
+        public TreeNode<T> this[string FullName] => this.GetChildByFullName(FullName);
 
         /// <summary>
         /// Gets a child node recursively by full name.
@@ -259,7 +258,10 @@ namespace Penguin.Shared.Objects
         /// Returns the full path of this tree node
         /// </summary>
         /// <returns>The full path of this tree node</returns>
-        public override string ToString() => this.FullName;
+        public override string ToString()
+        {
+            return this.FullName;
+        }
 
         #endregion Methods
     }
