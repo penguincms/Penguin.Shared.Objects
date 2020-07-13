@@ -105,6 +105,13 @@
             The object that resides at this level of the tree
             </summary>
         </member>
+        <member name="P:Penguin.Shared.Objects.TreeNode`1.Item(System.String)">
+            <summary>
+            Searches the downline of this node and returns a child node with a matching full name
+            </summary>
+            <param name="FullName">The full name to search for</param>
+            <returns>A child node with the matching name, or null if none is found</returns>
+        </member>
         <member name="M:Penguin.Shared.Objects.TreeNode`1.#ctor(`0,System.Func{`0,System.String},System.Char)">
             <summary>
             Creates a new tree node
@@ -127,13 +134,6 @@
             <param name="value">The object held by the node</param>
             <param name="path">The path of this node</param>
             <param name="delimeter">The character used to delimit the nodes in the path (ex "C:\Program Files\My Application" == '\')</param>
-        </member>
-        <member name="P:Penguin.Shared.Objects.TreeNode`1.Item(System.String)">
-            <summary>
-            Searches the downline of this node and returns a child node with a matching full name
-            </summary>
-            <param name="FullName">The full name to search for</param>
-            <returns>A child node with the matching name, or null if none is found</returns>
         </member>
         <member name="M:Penguin.Shared.Objects.TreeNode`1.GetChildByFullName(System.String)">
             <summary>

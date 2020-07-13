@@ -64,12 +64,19 @@ namespace Penguin.Shared.Objects
         #region Constructors
 
         /// <summary>
+        /// Searches the downline of this node and returns a child node with a matching full name
+        /// </summary>
+        /// <param name="FullName">The full name to search for</param>
+        /// <returns>A child node with the matching name, or null if none is found</returns>
+        public TreeNode<T> this[string FullName] => this.GetChildByFullName(FullName);
+
+        /// <summary>
         /// Creates a new tree node
         /// </summary>
         /// <param name="value">The object held by the node</param>
         /// <param name="PathFunction">A func used to return the path of this node on the tree</param>
         /// <param name="delimeter">The character used to delimit the nodes in the path (ex "C:\Program Files\My Application" == '\')</param>
-        public TreeNode(T value, Func<T, string> PathFunction, char delimeter = '\\') : this(value, PathFunction(value), delimeter)
+        public TreeNode(T value, Func<T, string> PathFunction, char delimeter = '\\') : this(value, (PathFunction ?? throw new ArgumentNullException(nameof(PathFunction))).Invoke(value), delimeter)
         {
         }
 
@@ -125,13 +132,6 @@ namespace Penguin.Shared.Objects
 
             this.Children = new List<TreeNode<T>>();
         }
-
-        /// <summary>
-        /// Searches the downline of this node and returns a child node with a matching full name
-        /// </summary>
-        /// <param name="FullName">The full name to search for</param>
-        /// <returns>A child node with the matching name, or null if none is found</returns>
-        public TreeNode<T> this[string FullName] => this.GetChildByFullName(FullName);
 
         /// <summary>
         /// Gets a child node recursively by full name.
@@ -197,6 +197,11 @@ namespace Penguin.Shared.Objects
         /// <param name="thisNode">The node to add as a leaf</param>
         public void AddChild(TreeNode<T> thisNode)
         {
+            if (thisNode is null)
+            {
+                throw new ArgumentNullException(nameof(thisNode));
+            }
+
             if (thisNode.Parent != null)
             {
                 thisNode.Parent.RemoveChild(thisNode);
@@ -224,9 +229,9 @@ namespace Penguin.Shared.Objects
         }
 
         /// <summary>
-        /// Returns a list of treenodes leading to this node, from trunk to leaf
+        /// Returns a list of tree nodes leading to this node, from trunk to leaf
         /// </summary>
-        /// <returns>A list of treenodes leading to this node, from trunk to leaf</returns>
+        /// <returns>A list of tree nodes leading to this node, from trunk to leaf</returns>
         public List<TreeNode<T>> GetBranch()
         {
             List<TreeNode<T>> treeNodes = new List<TreeNode<T>>();
@@ -250,6 +255,11 @@ namespace Penguin.Shared.Objects
         /// <param name="thisNode">The node to remove</param>
         public void RemoveChild(TreeNode<T> thisNode)
         {
+            if (thisNode is null)
+            {
+                throw new ArgumentNullException(nameof(thisNode));
+            }
+
             this.Children.Remove(thisNode);
             thisNode.Parent = null;
         }
