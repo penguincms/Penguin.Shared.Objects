@@ -164,9 +164,9 @@
         </member>
         <member name="M:Penguin.Shared.Objects.TreeNode`1.GetBranch">
             <summary>
-            Returns a list of treenodes leading to this node, from trunk to leaf
+            Returns a list of tree nodes leading to this node, from trunk to leaf
             </summary>
-            <returns>A list of treenodes leading to this node, from trunk to leaf</returns>
+            <returns>A list of tree nodes leading to this node, from trunk to leaf</returns>
         </member>
         <member name="M:Penguin.Shared.Objects.TreeNode`1.RemoveChild(Penguin.Shared.Objects.TreeNode{`0})">
             <summary>
