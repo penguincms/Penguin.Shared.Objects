@@ -2,7 +2,7 @@
   <Import Project="Penguin.Projects.Shared\Penguin.Projects.Shared.csproj" />
   <PropertyGroup>
     <PackageProjectUrl>https://github.com/penguincms/Penguin.Shared.Objects</PackageProjectUrl>
-    <Version>5.0.1</Version>
+    <Version>5.0.5</Version>
     <Description>A few Penguin objects, most notibly a TreeNode object that parses and "leafs" IEnumerables of objects based on a user-defined string produced by a func. Useful for turning lists of paths into navigatable tree structures. This allows for removing recursive key references on data tables simplifying data schema</Description>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Penguin.Shared.Objects</AssemblyName>
@@ -10,6 +10,7 @@
     <DocumentationFile>Penguin.Shared.Objects.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <ProjectReference Include="..\Penguin.Extensions.String\Penguin.Extensions.String.Local.csproj" />
   </ItemGroup>
 </Project>
