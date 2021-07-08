@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <Import Project="Penguin.Projects.Shared\Penguin.Projects.Shared.csproj" />
   <PropertyGroup>
-    <PackageProjectUrl>https://github.com/penguincms/Penguin.Shared.Objects</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/PenguinCMS/Penguin.Shared.Objects</PackageProjectUrl>
     <Version>5.0.5</Version>
     <Description>A few Penguin objects, most notibly a TreeNode object that parses and "leafs" IEnumerables of objects based on a user-defined string produced by a func. Useful for turning lists of paths into navigatable tree structures. This allows for removing recursive key references on data tables simplifying data schema</Description>
     <TargetFramework>netstandard2.0</TargetFramework>
