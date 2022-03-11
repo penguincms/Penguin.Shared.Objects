@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.IO;
+using System.Reflection;
 
 namespace Penguin.Shared.Helpers
 {
@@ -19,6 +20,8 @@ namespace Penguin.Shared.Helpers
             DefaultValueHandling = DefaultValueHandling.Include,
             ObjectCreationHandling = ObjectCreationHandling.Replace
         };
+
+        public static string RootDirectory = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, System.AppDomain.CurrentDomain.RelativeSearchPath ?? "");
 
         /// <summary>
         /// Checks if an existing configuration for the file name exists
@@ -46,7 +49,7 @@ namespace Penguin.Shared.Helpers
         /// <returns>The file name for the Configuration</returns>
         public static string GetConfigurationPath<T>() where T : class, new()
         {
-            return $"{typeof(T).FullName}.json";
+            return Path.Combine(RootDirectory, $"{typeof(T).FullName}.json");
         }
 
         /// <summary>
@@ -77,6 +80,7 @@ namespace Penguin.Shared.Helpers
         /// </summary>
         /// <typeparam name="T">The type to init or load</typeparam>
         /// <param name="isNew">True if the file doesn't already exist</param>
+        /// <param name="path">Optional path to load the file from</param>
         /// <returns>The configuration requested</returns>
         public static T Load<T>(out bool isNew, string path = null) where T : class, new()
         {
@@ -104,6 +108,7 @@ namespace Penguin.Shared.Helpers
         /// </summary>
         /// <typeparam name="T">The type to save</typeparam>
         /// <param name="toSave">The configuration to save</param>
+        /// <param name="path">Optional path to save the file to</param>
         /// <returns>True if a file already exists. Will always return true if saved from a load, because load creates the default object</returns>
         public static bool Save<T>(T toSave = null, string path = null) where T : class, new()
         {
