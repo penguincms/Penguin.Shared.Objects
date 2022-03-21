@@ -268,10 +268,7 @@ namespace Penguin.Shared
         /// Returns the full path of this tree node
         /// </summary>
         /// <returns>The full path of this tree node</returns>
-        public override string ToString()
-        {
-            return this.FullName;
-        }
+        public override string ToString() => this.FullName;
 
         #endregion Methods
     }

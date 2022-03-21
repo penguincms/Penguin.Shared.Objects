@@ -28,29 +28,20 @@ namespace Penguin.Shared.Helpers
         /// </summary>
         /// <typeparam name="T">The type to check for</typeparam>
         /// <returns>True if a file exists</returns>
-        public static bool Exists<T>() where T : class, new()
-        {
-            return File.Exists(GetConfigurationPath<T>());
-        }
+        public static bool Exists<T>() where T : class, new() => File.Exists(GetConfigurationPath<T>());
 
         /// <summary>
         /// Just use File.Exists
         /// </summary>
         /// <returns>True if a file exists</returns>
-        public static bool Exists(string path)
-        {
-            return File.Exists(path);
-        }
+        public static bool Exists(string path) => File.Exists(path);
 
         /// <summary>
         /// Gets the file name for the configuration
         /// </summary>
         /// <typeparam name="T">The type to check for</typeparam>
         /// <returns>The file name for the Configuration</returns>
-        public static string GetConfigurationPath<T>() where T : class, new()
-        {
-            return Path.Combine(RootDirectory, $"{typeof(T).FullName}.json");
-        }
+        public static string GetConfigurationPath<T>() where T : class, new() => $"{typeof(T).FullName}.json";
 
         /// <summary>
         /// Loads an existing configuration from the disk, or creates a default file
@@ -58,10 +49,7 @@ namespace Penguin.Shared.Helpers
         /// </summary>
         /// <typeparam name="T">The type to init or load</typeparam>
         /// <returns>The configuration requested</returns>
-        public static T Load<T>() where T : class, new()
-        {
-            return Load<T>(out _);
-        }
+        public static T Load<T>() where T : class, new() => Load<T>(out _);
 
         /// <summary>
         /// Loads an existing configuration from the disk, or creates a default file
@@ -69,10 +57,7 @@ namespace Penguin.Shared.Helpers
         /// </summary>
         /// <typeparam name="T">The type to init or load</typeparam>
         /// <returns>The configuration requested</returns>
-        public static T Load<T>(string path) where T : class, new()
-        {
-            return Load<T>(out _, path);
-        }
+        public static T Load<T>(string path) where T : class, new() => Load<T>(out _, path);
 
         /// <summary>
         /// Loads an existing configuration from the disk, or creates a default file
