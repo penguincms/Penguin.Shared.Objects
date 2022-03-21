@@ -16,10 +16,7 @@ namespace Penguin.Shared.Objects.Extensions
         /// <param name="Delimeter">The delimiter to use for nodes in the path</param>
         /// <param name="comparer">The string comparer to use when testing the path for equality</param>
         /// <returns>A tree node structure of the original IEnumerable</returns>
-        public static TreeNode<string> ToTree(this IEnumerable<string> target, char Delimeter = '\\', StringComparer comparer = null)
-        {
-            return ToTree(target, (s) => s, Delimeter, comparer);
-        }
+        public static TreeNode<string> ToTree(this IEnumerable<string> target, char Delimeter = '\\', StringComparer comparer = null) => ToTree(target, (s) => s, Delimeter, comparer);
 
         /// <summary>
         /// Converts a generic object IEnumerable to a tree node structure

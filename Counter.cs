@@ -6,26 +6,23 @@
 
         public int Increment()
         {
-            lock (_lock)
+            lock (this._lock)
             {
-                _Value++;
-                return _Value;
+                this._Value++;
+                return this._Value;
             }
 
         }
 
-        public static implicit operator Counter(int v)
-        {
-            return new Counter(v);
-        }
+        public static implicit operator Counter(int v) => new Counter(v);
 
         private int _Value;
 
-        public int Value => Value;
+        public int Value => this.Value;
 
         public Counter(int value)
         {
-            _Value = value;
+            this._Value = value;
         }
     }
 }
