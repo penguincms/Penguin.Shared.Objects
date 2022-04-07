@@ -20,7 +20,10 @@ namespace Penguin.Shared.Helpers
             DefaultValueHandling = DefaultValueHandling.Include,
             ObjectCreationHandling = ObjectCreationHandling.Replace
         };
-
+        
+        /// <summary>
+        /// The directory that should be searched for the ocnfiguration files 
+        /// </summary>
         public static string RootDirectory = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, System.AppDomain.CurrentDomain.RelativeSearchPath ?? "");
 
         /// <summary>
@@ -41,7 +44,7 @@ namespace Penguin.Shared.Helpers
         /// </summary>
         /// <typeparam name="T">The type to check for</typeparam>
         /// <returns>The file name for the Configuration</returns>
-        public static string GetConfigurationPath<T>() where T : class, new() => $"{typeof(T).FullName}.json";
+        public static string GetConfigurationPath<T>() where T : class, new() => Path.Combine(RootDirectory, $"{typeof(T).FullName}.json");
 
         /// <summary>
         /// Loads an existing configuration from the disk, or creates a default file

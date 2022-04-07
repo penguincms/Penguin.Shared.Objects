@@ -50,6 +50,11 @@
             Overrides the configuration serialization settings
             </summary>
         </member>
+        <member name="F:Penguin.Shared.Helpers.ConfigurationHelper.RootDirectory">
+            <summary>
+            The directory that should be searched for the ocnfiguration files 
+            </summary>
+        </member>
         <member name="M:Penguin.Shared.Helpers.ConfigurationHelper.Exists``1">
             <summary>
             Checks if an existing configuration for the file name exists
