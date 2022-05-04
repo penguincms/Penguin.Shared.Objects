@@ -1,4 +1,4 @@
-﻿namespace Penguin.Shared
+﻿namespace Penguin.Shared.Objects
 {
     public class Counter
     {
@@ -6,10 +6,13 @@
         private long value = 0;
         public long Next => this.Increment();
 
-        public static implicit operator Counter(long i) => new Counter()
+        public static implicit operator Counter(long i)
         {
-            value = i
-        };
+            return new Counter()
+            {
+                value = i
+            };
+        }
 
         /// <summary>
         /// Increments the counter by 1 in a thread safe manner
@@ -28,6 +31,9 @@
             return nv;
         }
 
-        public override string ToString() => $"{this.value}";
+        public override string ToString()
+        {
+            return $"{this.value}";
+        }
     }
 }

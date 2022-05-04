@@ -1,4 +1,4 @@
-﻿namespace Penguin.Shared
+﻿namespace Penguin.Shared.Objects
 {
     /// <summary>
     /// A simple True/False/Error object

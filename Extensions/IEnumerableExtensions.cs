@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Penguin.Shared.Extensions
+namespace Penguin.Shared.Objects.Extensions
 {
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
@@ -16,7 +16,28 @@ namespace Penguin.Shared.Extensions
         /// <param name="Delimeter">The delimiter to use for nodes in the path</param>
         /// <param name="comparer">The string comparer to use when testing the path for equality</param>
         /// <returns>A tree node structure of the original IEnumerable</returns>
-        public static TreeNode<string> ToTree(this IEnumerable<string> target, char Delimeter = '\\', StringComparer comparer = null) => ToTree(target, (s) => s, Delimeter, comparer);
+
+        /* Unmerged change from project 'Penguin.Shared.Objects.Local (net5.0)'
+        Before:
+                public static TreeNode<string> ToTree(this IEnumerable<string> target, char Delimeter = '\\', StringComparer comparer = null) => ToTree(target, (s) => s, Delimeter, comparer);
+        After:
+                public static TreeNode<string> ToTree(this IEnumerable<string> target, char Delimeter = '\\', StringComparer comparer = null)
+                {
+                    return target.ToTree(target, (s) => s, Delimeter, comparer);
+        */
+
+        /* Unmerged change from project 'Penguin.Shared.Objects.Local (netstandard2.1)'
+        Before:
+                public static TreeNode<string> ToTree(this IEnumerable<string> target, char Delimeter = '\\', StringComparer comparer = null) => ToTree(target, (s) => s, Delimeter, comparer);
+        After:
+                public static TreeNode<string> ToTree(this IEnumerable<string> target, char Delimeter = '\\', StringComparer comparer = null)
+                {
+                    return target.ToTree(target, (s) => s, Delimeter, comparer);
+        */
+        public static TreeNode<string> ToTree(this IEnumerable<string> target, char Delimeter = '\\', StringComparer comparer = null)
+        {
+            return target.ToTree((s) => s, Delimeter, comparer);
+        }
 
         /// <summary>
         /// Converts a generic object IEnumerable to a tree node structure

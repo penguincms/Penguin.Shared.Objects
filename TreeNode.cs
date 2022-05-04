@@ -1,9 +1,9 @@
-﻿using Penguin.Extensions.Strings;
+﻿using Penguin.Extensions.String;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Penguin.Shared
+namespace Penguin.Shared.Objects
 {
     /// <summary>
     /// A recursive object used to build out a tree of objects based on a string representation of the object path
@@ -260,7 +260,7 @@ namespace Penguin.Shared
                 throw new ArgumentNullException(nameof(thisNode));
             }
 
-            this.Children.Remove(thisNode);
+            _ = this.Children.Remove(thisNode);
             thisNode.Parent = null;
         }
 
@@ -268,7 +268,10 @@ namespace Penguin.Shared
         /// Returns the full path of this tree node
         /// </summary>
         /// <returns>The full path of this tree node</returns>
-        public override string ToString() => this.FullName;
+        public override string ToString()
+        {
+            return this.FullName;
+        }
 
         #endregion Methods
     }

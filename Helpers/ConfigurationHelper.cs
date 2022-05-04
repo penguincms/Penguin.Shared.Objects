@@ -1,8 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.IO;
-using System.Reflection;
 
-namespace Penguin.Shared.Helpers
+namespace Penguin.Shared.Objects.Helpers
 {
     /// <summary>
     /// Saves and loads a class to a file of a predetermined name,
@@ -20,31 +19,58 @@ namespace Penguin.Shared.Helpers
             DefaultValueHandling = DefaultValueHandling.Include,
             ObjectCreationHandling = ObjectCreationHandling.Replace
         };
-        
+
         /// <summary>
         /// The directory that should be searched for the ocnfiguration files 
         /// </summary>
-        public static string RootDirectory = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, System.AppDomain.CurrentDomain.RelativeSearchPath ?? "");
+        public static string RootDirectory = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, System.AppDomain.CurrentDomain.RelativeSearchPath ?? "");
 
         /// <summary>
         /// Checks if an existing configuration for the file name exists
         /// </summary>
         /// <typeparam name="T">The type to check for</typeparam>
         /// <returns>True if a file exists</returns>
-        public static bool Exists<T>() where T : class, new() => File.Exists(GetConfigurationPath<T>());
+        public static bool Exists<T>() where T : class, new()
+        {
+            return File.Exists(GetConfigurationPath<T>());
+        }
 
         /// <summary>
         /// Just use File.Exists
         /// </summary>
         /// <returns>True if a file exists</returns>
-        public static bool Exists(string path) => File.Exists(path);
+
+        /* Unmerged change from project 'Penguin.Shared.Objects.Local (net5.0)'
+        Before:
+                public static bool Exists(string path) => File.Exists(path);
+        After:
+                public static bool Exists(string path)
+                {
+                    return File.Exists(path);
+        */
+
+        /* Unmerged change from project 'Penguin.Shared.Objects.Local (netstandard2.1)'
+        Before:
+                public static bool Exists(string path) => File.Exists(path);
+        After:
+                public static bool Exists(string path)
+                {
+                    return File.Exists(path);
+        */
+        public static bool Exists(string path)
+        {
+            return File.Exists(path);
+        }
 
         /// <summary>
         /// Gets the file name for the configuration
         /// </summary>
         /// <typeparam name="T">The type to check for</typeparam>
         /// <returns>The file name for the Configuration</returns>
-        public static string GetConfigurationPath<T>() where T : class, new() => Path.Combine(RootDirectory, $"{typeof(T).FullName}.json");
+        public static string GetConfigurationPath<T>() where T : class, new()
+        {
+            return Path.Combine(RootDirectory, $"{typeof(T).FullName}.json");
+        }
 
         /// <summary>
         /// Loads an existing configuration from the disk, or creates a default file
@@ -52,7 +78,28 @@ namespace Penguin.Shared.Helpers
         /// </summary>
         /// <typeparam name="T">The type to init or load</typeparam>
         /// <returns>The configuration requested</returns>
-        public static T Load<T>() where T : class, new() => Load<T>(out _);
+
+        /* Unmerged change from project 'Penguin.Shared.Objects.Local (net5.0)'
+        Before:
+                public static T Load<T>() where T : class, new() => Load<T>(out _);
+        After:
+                public static T Load<T>() where T : class, new()
+                {
+                    return Load<T>(out _);
+        */
+
+        /* Unmerged change from project 'Penguin.Shared.Objects.Local (netstandard2.1)'
+        Before:
+                public static T Load<T>() where T : class, new() => Load<T>(out _);
+        After:
+                public static T Load<T>() where T : class, new()
+                {
+                    return Load<T>(out _);
+        */
+        public static T Load<T>() where T : class, new()
+        {
+            return Load<T>(out _);
+        }
 
         /// <summary>
         /// Loads an existing configuration from the disk, or creates a default file
@@ -60,7 +107,10 @@ namespace Penguin.Shared.Helpers
         /// </summary>
         /// <typeparam name="T">The type to init or load</typeparam>
         /// <returns>The configuration requested</returns>
-        public static T Load<T>(string path) where T : class, new() => Load<T>(out _, path);
+        public static T Load<T>(string path) where T : class, new()
+        {
+            return Load<T>(out _, path);
+        }
 
         /// <summary>
         /// Loads an existing configuration from the disk, or creates a default file
@@ -80,7 +130,7 @@ namespace Penguin.Shared.Helpers
             {
                 isNew = true;
                 toReturn = new T();
-                Save(toReturn, path);
+                _ = Save(toReturn, path);
             }
             else
             {
