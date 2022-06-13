@@ -38,78 +38,6 @@
             <param name="target">The list to flatten</param>
             <returns>A flattened representation of the target recursive tree</returns>
         </member>
-        <member name="T:Penguin.Shared.Objects.Helpers.ConfigurationHelper">
-            <summary>
-            Saves and loads a class to a file of a predetermined name,
-            intended to be used for easy access to simple singleton style
-            configurations
-            </summary>
-        </member>
-        <member name="P:Penguin.Shared.Objects.Helpers.ConfigurationHelper.SerializerSettings">
-            <summary>
-            Overrides the configuration serialization settings
-            </summary>
-        </member>
-        <member name="F:Penguin.Shared.Objects.Helpers.ConfigurationHelper.RootDirectory">
-            <summary>
-            The directory that should be searched for the ocnfiguration files 
-            </summary>
-        </member>
-        <member name="M:Penguin.Shared.Objects.Helpers.ConfigurationHelper.Exists``1">
-            <summary>
-            Checks if an existing configuration for the file name exists
-            </summary>
-            <typeparam name="T">The type to check for</typeparam>
-            <returns>True if a file exists</returns>
-        </member>
-        <member name="M:Penguin.Shared.Objects.Helpers.ConfigurationHelper.Exists(System.String)">
-            <summary>
-            Just use File.Exists
-            </summary>
-            <returns>True if a file exists</returns>
-        </member>
-        <member name="M:Penguin.Shared.Objects.Helpers.ConfigurationHelper.GetConfigurationPath``1">
-            <summary>
-            Gets the file name for the configuration
-            </summary>
-            <typeparam name="T">The type to check for</typeparam>
-            <returns>The file name for the Configuration</returns>
-        </member>
-        <member name="M:Penguin.Shared.Objects.Helpers.ConfigurationHelper.Load``1">
-            <summary>
-            Loads an existing configuration from the disk, or creates a default file
-            based on a new instance if it does not
-            </summary>
-            <typeparam name="T">The type to init or load</typeparam>
-            <returns>The configuration requested</returns>
-        </member>
-        <member name="M:Penguin.Shared.Objects.Helpers.ConfigurationHelper.Load``1(System.String)">
-            <summary>
-            Loads an existing configuration from the disk, or creates a default file
-            based on a new instance if it does not, at the requested path
-            </summary>
-            <typeparam name="T">The type to init or load</typeparam>
-            <returns>The configuration requested</returns>
-        </member>
-        <member name="M:Penguin.Shared.Objects.Helpers.ConfigurationHelper.Load``1(System.Boolean@,System.String)">
-            <summary>
-            Loads an existing configuration from the disk, or creates a default file
-            based on a new instance if it does not
-            </summary>
-            <typeparam name="T">The type to init or load</typeparam>
-            <param name="isNew">True if the file doesn't already exist</param>
-            <param name="path">Optional path to load the file from</param>
-            <returns>The configuration requested</returns>
-        </member>
-        <member name="M:Penguin.Shared.Objects.Helpers.ConfigurationHelper.Save``1(``0,System.String)">
-            <summary>
-            Saves the configuration to a predetermined file
-            </summary>
-            <typeparam name="T">The type to save</typeparam>
-            <param name="toSave">The configuration to save</param>
-            <param name="path">Optional path to save the file to</param>
-            <returns>True if a file already exists. Will always return true if saved from a load, because load creates the default object</returns>
-        </member>
         <member name="T:Penguin.Shared.Objects.Interfaces.IRecursiveList`1">
             <summary>
             An interface to denote a recursive One-To-Many object structure
@@ -131,66 +59,138 @@
             A simple True/False/Error object
             </summary>
         </member>
-        <member name="T:Penguin.Shared.Objects.TreeNode`1">
+        <member name="T:Penguin.Shared.Helpers.ConfigurationHelper">
+            <summary>
+            Saves and loads a class to a file of a predetermined name,
+            intended to be used for easy access to simple singleton style
+            configurations
+            </summary>
+        </member>
+        <member name="P:Penguin.Shared.Helpers.ConfigurationHelper.SerializerSettings">
+            <summary>
+            Overrides the configuration serialization settings
+            </summary>
+        </member>
+        <member name="F:Penguin.Shared.Helpers.ConfigurationHelper.RootDirectory">
+            <summary>
+            The directory that should be searched for the ocnfiguration files 
+            </summary>
+        </member>
+        <member name="M:Penguin.Shared.Helpers.ConfigurationHelper.Exists``1">
+            <summary>
+            Checks if an existing configuration for the file name exists
+            </summary>
+            <typeparam name="T">The type to check for</typeparam>
+            <returns>True if a file exists</returns>
+        </member>
+        <member name="M:Penguin.Shared.Helpers.ConfigurationHelper.Exists(System.String)">
+            <summary>
+            Just use File.Exists
+            </summary>
+            <returns>True if a file exists</returns>
+        </member>
+        <member name="M:Penguin.Shared.Helpers.ConfigurationHelper.GetConfigurationPath``1">
+            <summary>
+            Gets the file name for the configuration
+            </summary>
+            <typeparam name="T">The type to check for</typeparam>
+            <returns>The file name for the Configuration</returns>
+        </member>
+        <member name="M:Penguin.Shared.Helpers.ConfigurationHelper.Load``1">
+            <summary>
+            Loads an existing configuration from the disk, or creates a default file
+            based on a new instance if it does not
+            </summary>
+            <typeparam name="T">The type to init or load</typeparam>
+            <returns>The configuration requested</returns>
+        </member>
+        <member name="M:Penguin.Shared.Helpers.ConfigurationHelper.Load``1(System.String)">
+            <summary>
+            Loads an existing configuration from the disk, or creates a default file
+            based on a new instance if it does not, at the requested path
+            </summary>
+            <typeparam name="T">The type to init or load</typeparam>
+            <returns>The configuration requested</returns>
+        </member>
+        <member name="M:Penguin.Shared.Helpers.ConfigurationHelper.Load``1(System.Boolean@,System.String)">
+            <summary>
+            Loads an existing configuration from the disk, or creates a default file
+            based on a new instance if it does not
+            </summary>
+            <typeparam name="T">The type to init or load</typeparam>
+            <param name="isNew">True if the file doesn't already exist</param>
+            <param name="path">Optional path to load the file from</param>
+            <returns>The configuration requested</returns>
+        </member>
+        <member name="M:Penguin.Shared.Helpers.ConfigurationHelper.Save``1(``0,System.String)">
+            <summary>
+            Saves the configuration to a predetermined file
+            </summary>
+            <typeparam name="T">The type to save</typeparam>
+            <param name="toSave">The configuration to save</param>
+            <param name="path">Optional path to save the file to</param>
+            <returns>True if a file already exists. Will always return true if saved from a load, because load creates the default object</returns>
+        </member>
+        <member name="T:Penguin.Shared.TreeNode`1">
             <summary>
             A recursive object used to build out a tree of objects based on a string representation of the object path
             </summary>
             <typeparam name="T"></typeparam>
         </member>
-        <member name="P:Penguin.Shared.Objects.TreeNode`1.Children">
+        <member name="P:Penguin.Shared.TreeNode`1.Children">
             <summary>
             The nodes that reside beneath this node
             </summary>
         </member>
-        <member name="P:Penguin.Shared.Objects.TreeNode`1.Delimiter">
+        <member name="P:Penguin.Shared.TreeNode`1.Delimiter">
             <summary>
             The character used to delimit nodes on the path
             </summary>
         </member>
-        <member name="P:Penguin.Shared.Objects.TreeNode`1.FullName">
+        <member name="P:Penguin.Shared.TreeNode`1.FullName">
             <summary>
             The full path of this node
             </summary>
         </member>
-        <member name="P:Penguin.Shared.Objects.TreeNode`1.HasChildren">
+        <member name="P:Penguin.Shared.TreeNode`1.HasChildren">
             <summary>
             Whether or not this node has children
             </summary>
         </member>
-        <member name="P:Penguin.Shared.Objects.TreeNode`1.IsReal">
+        <member name="P:Penguin.Shared.TreeNode`1.IsReal">
             <summary>
             If false, this nodes existence was inferred from child paths and not part of the passed in list of paths used to
             create the tree
             </summary>
         </member>
-        <member name="P:Penguin.Shared.Objects.TreeNode`1.Name">
+        <member name="P:Penguin.Shared.TreeNode`1.Name">
             <summary>
             The last segment of the path representing the name of this node
             </summary>
         </member>
-        <member name="P:Penguin.Shared.Objects.TreeNode`1.Parent">
+        <member name="P:Penguin.Shared.TreeNode`1.Parent">
             <summary>
             The parent node up one level
             </summary>
         </member>
-        <member name="P:Penguin.Shared.Objects.TreeNode`1.Path">
+        <member name="P:Penguin.Shared.TreeNode`1.Path">
             <summary>
             The path to this node not including the name of this node.
             </summary>
         </member>
-        <member name="P:Penguin.Shared.Objects.TreeNode`1.Value">
+        <member name="P:Penguin.Shared.TreeNode`1.Value">
             <summary>
             The object that resides at this level of the tree
             </summary>
         </member>
-        <member name="P:Penguin.Shared.Objects.TreeNode`1.Item(System.String)">
+        <member name="P:Penguin.Shared.TreeNode`1.Item(System.String)">
             <summary>
             Searches the downline of this node and returns a child node with a matching full name
             </summary>
             <param name="FullName">The full name to search for</param>
             <returns>A child node with the matching name, or null if none is found</returns>
         </member>
-        <member name="M:Penguin.Shared.Objects.TreeNode`1.#ctor(`0,System.Func{`0,System.String},System.Char)">
+        <member name="M:Penguin.Shared.TreeNode`1.#ctor(`0,System.Func{`0,System.String},System.Char)">
             <summary>
             Creates a new tree node
             </summary>
@@ -198,14 +198,14 @@
             <param name="PathFunction">A func used to return the path of this node on the tree</param>
             <param name="delimeter">The character used to delimit the nodes in the path (ex "C:\Program Files\My Application" == '\')</param>
         </member>
-        <member name="M:Penguin.Shared.Objects.TreeNode`1.#ctor(System.String,System.Char)">
+        <member name="M:Penguin.Shared.TreeNode`1.#ctor(System.String,System.Char)">
             <summary>
             Creates a new tree node
             </summary>
             <param name="path">The path of this node</param>
             <param name="delimeter">The character used to delimit the nodes in the path (ex "C:\Program Files\My Application" == '\')</param>
         </member>
-        <member name="M:Penguin.Shared.Objects.TreeNode`1.#ctor(`0,System.String,System.Char)">
+        <member name="M:Penguin.Shared.TreeNode`1.#ctor(`0,System.String,System.Char)">
             <summary>
             Creates a new tree node
             </summary>
@@ -213,46 +213,46 @@
             <param name="path">The path of this node</param>
             <param name="delimeter">The character used to delimit the nodes in the path (ex "C:\Program Files\My Application" == '\')</param>
         </member>
-        <member name="M:Penguin.Shared.Objects.TreeNode`1.GetChildByFullName(System.String)">
+        <member name="M:Penguin.Shared.TreeNode`1.GetChildByFullName(System.String)">
             <summary>
             Gets a child node recursively by full name.
             </summary>
             <param name="FullName">The full name of the node to return</param>
             <returns>The first node matching the full name, or null</returns>
         </member>
-        <member name="M:Penguin.Shared.Objects.TreeNode`1.GetChildByValue(`0)">
+        <member name="M:Penguin.Shared.TreeNode`1.GetChildByValue(`0)">
             <summary>
             Gets a child node recursively by value using the default comparer
             </summary>
             <param name="value">The value of the node to return</param>
             <returns>The first node matching the value, or null</returns>
         </member>
-        <member name="M:Penguin.Shared.Objects.TreeNode`1.AddChild(Penguin.Shared.Objects.TreeNode{`0})">
+        <member name="M:Penguin.Shared.TreeNode`1.AddChild(Penguin.Shared.TreeNode{`0})">
             <summary>
             Adds a leaf to this node
             </summary>
             <param name="thisNode">The node to add as a leaf</param>
         </member>
-        <member name="M:Penguin.Shared.Objects.TreeNode`1.FindNode(System.String)">
+        <member name="M:Penguin.Shared.TreeNode`1.FindNode(System.String)">
             <summary>
             Finds a node in the current nodes downline, based on the path of the node
             </summary>
             <param name="Path"></param>
             <returns></returns>
         </member>
-        <member name="M:Penguin.Shared.Objects.TreeNode`1.GetBranch">
+        <member name="M:Penguin.Shared.TreeNode`1.GetBranch">
             <summary>
             Returns a list of tree nodes leading to this node, from trunk to leaf
             </summary>
             <returns>A list of tree nodes leading to this node, from trunk to leaf</returns>
         </member>
-        <member name="M:Penguin.Shared.Objects.TreeNode`1.RemoveChild(Penguin.Shared.Objects.TreeNode{`0})">
+        <member name="M:Penguin.Shared.TreeNode`1.RemoveChild(Penguin.Shared.TreeNode{`0})">
             <summary>
             Removed a child leaf from this node
             </summary>
             <param name="thisNode">The node to remove</param>
         </member>
-        <member name="M:Penguin.Shared.Objects.TreeNode`1.ToString">
+        <member name="M:Penguin.Shared.TreeNode`1.ToString">
             <summary>
             Returns the full path of this tree node
             </summary>

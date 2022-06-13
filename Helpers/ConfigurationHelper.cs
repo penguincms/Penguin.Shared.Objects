@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.IO;
 
-namespace Penguin.Shared.Objects.Helpers
+namespace Penguin.Shared.Helpers
 {
     /// <summary>
     /// Saves and loads a class to a file of a predetermined name,
@@ -39,28 +39,11 @@ namespace Penguin.Shared.Objects.Helpers
         /// Just use File.Exists
         /// </summary>
         /// <returns>True if a file exists</returns>
-
-        /* Unmerged change from project 'Penguin.Shared.Objects.Local (net5.0)'
-        Before:
-                public static bool Exists(string path) => File.Exists(path);
-        After:
-                public static bool Exists(string path)
-                {
-                    return File.Exists(path);
-        */
-
-        /* Unmerged change from project 'Penguin.Shared.Objects.Local (netstandard2.1)'
-        Before:
-                public static bool Exists(string path) => File.Exists(path);
-        After:
-                public static bool Exists(string path)
-                {
-                    return File.Exists(path);
-        */
         public static bool Exists(string path)
         {
             return File.Exists(path);
         }
+
 
         /// <summary>
         /// Gets the file name for the configuration
@@ -79,23 +62,7 @@ namespace Penguin.Shared.Objects.Helpers
         /// <typeparam name="T">The type to init or load</typeparam>
         /// <returns>The configuration requested</returns>
 
-        /* Unmerged change from project 'Penguin.Shared.Objects.Local (net5.0)'
-        Before:
-                public static T Load<T>() where T : class, new() => Load<T>(out _);
-        After:
-                public static T Load<T>() where T : class, new()
-                {
-                    return Load<T>(out _);
-        */
 
-        /* Unmerged change from project 'Penguin.Shared.Objects.Local (netstandard2.1)'
-        Before:
-                public static T Load<T>() where T : class, new() => Load<T>(out _);
-        After:
-                public static T Load<T>() where T : class, new()
-                {
-                    return Load<T>(out _);
-        */
         public static T Load<T>() where T : class, new()
         {
             return Load<T>(out _);

@@ -1,9 +1,9 @@
-﻿using Penguin.Extensions.Strings;
+﻿using Penguin.Extensions.String;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Penguin.Shared.Objects
+namespace Penguin.Shared
 {
     /// <summary>
     /// A recursive object used to build out a tree of objects based on a string representation of the object path
