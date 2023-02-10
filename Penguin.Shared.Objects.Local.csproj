@@ -4,7 +4,7 @@
     <PackageProjectUrl>https://github.com/PenguinCms/Penguin.Shared.Objects</PackageProjectUrl>
     <Version>5.0.5</Version>
     <Description>A few Penguin objects, most notibly a TreeNode object that parses and "leafs" IEnumerables of objects based on a user-defined string produced by a func. Useful for turning lists of paths into navigatable tree structures. This allows for removing recursive key references on data tables simplifying data schema</Description>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net5.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.1;net7.0</TargetFrameworks>
     <AssemblyName>Penguin.Shared.Objects</AssemblyName>
     <RootNamespace>Penguin.Shared</RootNamespace>
     <DocumentationFile>Penguin.Shared.Objects.xml</DocumentationFile>
