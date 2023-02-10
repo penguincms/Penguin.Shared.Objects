@@ -1,8 +1,8 @@
-﻿using Penguin.Shared.Objects.Interfaces;
+﻿using Penguin.Shared.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Penguin.Shared.Objects.Extensions
+namespace Penguin.Shared.Extensions
 {
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
@@ -17,7 +17,7 @@ namespace Penguin.Shared.Objects.Extensions
         /// <returns>A flattened representation of the target recursive tree</returns>
         public static IEnumerable<T> Flatten<T>(this T target) where T : IRecursiveList<T>
         {
-            List<T> toReturn = new List<T>() { target };
+            List<T> toReturn = new() { target };
 
             int i = 0;
 

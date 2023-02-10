@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Penguin.Shared.Objects.Interfaces
+namespace Penguin.Shared.Interfaces
 {
     /// <summary>
     /// An interface to denote a recursive One-To-Many object structure

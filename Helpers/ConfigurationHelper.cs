@@ -21,7 +21,7 @@ namespace Penguin.Shared.Helpers
         };
 
         /// <summary>
-        /// The directory that should be searched for the ocnfiguration files 
+        /// The directory that should be searched for the ocnfiguration files
         /// </summary>
         public static string RootDirectory = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, System.AppDomain.CurrentDomain.RelativeSearchPath ?? "");
 
@@ -44,7 +44,6 @@ namespace Penguin.Shared.Helpers
             return File.Exists(path);
         }
 
-
         /// <summary>
         /// Gets the file name for the configuration
         /// </summary>
@@ -61,7 +60,6 @@ namespace Penguin.Shared.Helpers
         /// </summary>
         /// <typeparam name="T">The type to init or load</typeparam>
         /// <returns>The configuration requested</returns>
-
 
         public static T Load<T>() where T : class, new()
         {
@@ -91,7 +89,7 @@ namespace Penguin.Shared.Helpers
         {
             T toReturn;
 
-            path = path ?? GetConfigurationPath<T>();
+            path ??= GetConfigurationPath<T>();
 
             if (!Exists(path))
             {
@@ -117,7 +115,7 @@ namespace Penguin.Shared.Helpers
         /// <returns>True if a file already exists. Will always return true if saved from a load, because load creates the default object</returns>
         public static bool Save<T>(T toSave = null, string path = null) where T : class, new()
         {
-            path = path ?? GetConfigurationPath<T>();
+            path ??= GetConfigurationPath<T>();
 
             bool exists = Exists(path);
 

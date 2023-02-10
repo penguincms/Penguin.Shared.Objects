@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Penguin.Shared.Objects.Extensions
+namespace Penguin.Shared.Extensions
 {
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
@@ -17,23 +17,6 @@ namespace Penguin.Shared.Objects.Extensions
         /// <param name="comparer">The string comparer to use when testing the path for equality</param>
         /// <returns>A tree node structure of the original IEnumerable</returns>
 
-        /* Unmerged change from project 'Penguin.Shared.Objects.Local (net5.0)'
-        Before:
-                public static TreeNode<string> ToTree(this IEnumerable<string> target, char Delimeter = '\\', StringComparer comparer = null) => ToTree(target, (s) => s, Delimeter, comparer);
-        After:
-                public static TreeNode<string> ToTree(this IEnumerable<string> target, char Delimeter = '\\', StringComparer comparer = null)
-                {
-                    return target.ToTree(target, (s) => s, Delimeter, comparer);
-        */
-
-        /* Unmerged change from project 'Penguin.Shared.Objects.Local (netstandard2.1)'
-        Before:
-                public static TreeNode<string> ToTree(this IEnumerable<string> target, char Delimeter = '\\', StringComparer comparer = null) => ToTree(target, (s) => s, Delimeter, comparer);
-        After:
-                public static TreeNode<string> ToTree(this IEnumerable<string> target, char Delimeter = '\\', StringComparer comparer = null)
-                {
-                    return target.ToTree(target, (s) => s, Delimeter, comparer);
-        */
         public static TreeNode<string> ToTree(this IEnumerable<string> target, char Delimeter = '\\', StringComparer comparer = null)
         {
             return target.ToTree((s) => s, Delimeter, comparer);
@@ -52,16 +35,13 @@ namespace Penguin.Shared.Objects.Extensions
         {
             if (!target.Any())
             {
-                TreeNode<T> root = new TreeNode<T>($"{Delimeter}", Delimeter);
+                TreeNode<T> root = new($"{Delimeter}", Delimeter);
                 return root;
             }
 
-            if (comparer == null)
-            {
-                comparer = StringComparer.OrdinalIgnoreCase;
-            }
+            comparer ??= StringComparer.OrdinalIgnoreCase;
 
-            Dictionary<string, TreeNode<T>> working = new Dictionary<string, TreeNode<T>>(comparer);
+            Dictionary<string, TreeNode<T>> working = new(comparer);
 
             foreach (TreeNode<T> thisNode in target.Select(v => new TreeNode<T>(v, Path, Delimeter)))
             {

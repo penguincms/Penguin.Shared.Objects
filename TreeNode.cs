@@ -31,13 +31,13 @@ namespace Penguin.Shared
         /// <summary>
         /// Whether or not this node has children
         /// </summary>
-        public bool HasChildren => this.Children.Any();
+        public bool HasChildren => Children.Any();
 
         /// <summary>
         /// If false, this nodes existence was inferred from child paths and not part of the passed in list of paths used to
         /// create the tree
         /// </summary>
-        public bool IsReal => !(this.Value is null);
+        public bool IsReal => Value is not null;
 
         /// <summary>
         /// The last segment of the path representing the name of this node
@@ -68,7 +68,7 @@ namespace Penguin.Shared
         /// </summary>
         /// <param name="FullName">The full name to search for</param>
         /// <returns>A child node with the matching name, or null if none is found</returns>
-        public TreeNode<T> this[string FullName] => this.GetChildByFullName(FullName);
+        public TreeNode<T> this[string FullName] => GetChildByFullName(FullName);
 
         /// <summary>
         /// Creates a new tree node
@@ -102,35 +102,35 @@ namespace Penguin.Shared
                 throw new ArgumentNullException(nameof(path));
             }
 
-            this.Value = value;
+            Value = value;
 
-            this.FullName = delimeter + path.Trim(delimeter);
-            this.Delimiter = delimeter;
+            FullName = delimeter + path.Trim(delimeter);
+            Delimiter = delimeter;
 
-            if (this.FullName == $"{delimeter}")
+            if (FullName == $"{delimeter}")
             {
-                this.Path = string.Empty;
-                this.Name = $"{delimeter}";
-                this.FullName = this.Name;
+                Path = string.Empty;
+                Name = $"{delimeter}";
+                FullName = Name;
             }
-            else if (this.FullName.Contains(delimeter))
+            else if (FullName.Contains(delimeter))
             {
-                this.Path = this.FullName.ToLast(delimeter);
+                Path = FullName.ToLast(delimeter);
 
-                if (string.IsNullOrEmpty(this.Path))
+                if (string.IsNullOrEmpty(Path))
                 {
-                    this.Path = $"{delimeter}";
+                    Path = $"{delimeter}";
                 }
 
-                this.Name = this.FullName.FromLast(delimeter);
+                Name = FullName.FromLast(delimeter);
             }
             else
             {
-                this.Path = $"{delimeter}";
-                this.Name = this.FullName;
+                Path = $"{delimeter}";
+                Name = FullName;
             }
 
-            this.Children = new List<TreeNode<T>>();
+            Children = new List<TreeNode<T>>();
         }
 
         /// <summary>
@@ -140,16 +140,16 @@ namespace Penguin.Shared
         /// <returns>The first node matching the full name, or null</returns>
         public TreeNode<T> GetChildByFullName(string FullName)
         {
-            TreeNode<T> found = this.Children.SingleOrDefault(t => t.FullName == FullName);
+            TreeNode<T> found = Children.SingleOrDefault(t => t.FullName == FullName);
 
             if (found != null)
             {
                 return found;
             }
 
-            for (int i = 0; i < this.Children.Count; i++)
+            for (int i = 0; i < Children.Count; i++)
             {
-                found = this.Children[i][FullName];
+                found = Children[i][FullName];
 
                 if (found != null)
                 {
@@ -167,16 +167,16 @@ namespace Penguin.Shared
         /// <returns>The first node matching the value, or null</returns>
         public TreeNode<T> GetChildByValue(T value)
         {
-            TreeNode<T> found = this.Children.SingleOrDefault(t => t.Value == value);
+            TreeNode<T> found = Children.SingleOrDefault(t => t.Value == value);
 
             if (found != null)
             {
                 return found;
             }
 
-            for (int i = 0; i < this.Children.Count; i++)
+            for (int i = 0; i < Children.Count; i++)
             {
-                found = this.Children[i].GetChildByValue(value);
+                found = Children[i].GetChildByValue(value);
 
                 if (found != null)
                 {
@@ -202,12 +202,9 @@ namespace Penguin.Shared
                 throw new ArgumentNullException(nameof(thisNode));
             }
 
-            if (thisNode.Parent != null)
-            {
-                thisNode.Parent.RemoveChild(thisNode);
-            }
+            thisNode.Parent?.RemoveChild(thisNode);
 
-            this.Children.Add(thisNode);
+            Children.Add(thisNode);
             thisNode.Parent = this;
         }
 
@@ -218,14 +215,7 @@ namespace Penguin.Shared
         /// <returns></returns>
         public TreeNode<T> FindNode(string Path)
         {
-            if (this.Path == Path)
-            {
-                return this;
-            }
-            else
-            {
-                return this.Children.Select(c => c.FindNode(Path)).Where(t => t != null).FirstOrDefault();
-            }
+            return this.Path == Path ? this : Children.Select(c => c.FindNode(Path)).Where(t => t != null).FirstOrDefault();
         }
 
         /// <summary>
@@ -234,7 +224,7 @@ namespace Penguin.Shared
         /// <returns>A list of tree nodes leading to this node, from trunk to leaf</returns>
         public List<TreeNode<T>> GetBranch()
         {
-            List<TreeNode<T>> treeNodes = new List<TreeNode<T>>();
+            List<TreeNode<T>> treeNodes = new();
 
             TreeNode<T> leaf = this;
 
@@ -260,7 +250,7 @@ namespace Penguin.Shared
                 throw new ArgumentNullException(nameof(thisNode));
             }
 
-            _ = this.Children.Remove(thisNode);
+            _ = Children.Remove(thisNode);
             thisNode.Parent = null;
         }
 
@@ -270,7 +260,7 @@ namespace Penguin.Shared
         /// <returns>The full path of this tree node</returns>
         public override string ToString()
         {
-            return this.FullName;
+            return FullName;
         }
 
         #endregion Methods

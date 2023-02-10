@@ -1,10 +1,10 @@
-﻿namespace Penguin.Shared.Objects
+﻿namespace Penguin.Shared
 {
     public class Counter
     {
-        private readonly object numLock = new object();
-        private long value = 0;
-        public long Next => this.Increment();
+        private readonly object numLock = new();
+        private long value;
+        public long Next => Increment();
 
         public static implicit operator Counter(long i)
         {
@@ -21,11 +21,11 @@
         public long Increment()
         {
             long nv;
-            lock (this.numLock)
+            lock (numLock)
             {
                 //Not thread safe. Lol
-                this.value++;
-                nv = this.value;
+                value++;
+                nv = value;
             }
 
             return nv;
@@ -33,7 +33,12 @@
 
         public override string ToString()
         {
-            return $"{this.value}";
+            return $"{value}";
+        }
+
+        public Counter ToCounter()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

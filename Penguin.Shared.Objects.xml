@@ -4,13 +4,13 @@
         <name>Penguin.Shared.Objects</name>
     </assembly>
     <members>
-        <member name="M:Penguin.Shared.Objects.Counter.Increment">
+        <member name="M:Penguin.Shared.Counter.Increment">
             <summary>
             Increments the counter by 1 in a thread safe manner
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Penguin.Shared.Objects.Extensions.IEnumerableExtensions.ToTree(System.Collections.Generic.IEnumerable{System.String},System.Char,System.StringComparer)">
+        <member name="M:Penguin.Shared.Extensions.IEnumerableExtensions.ToTree(System.Collections.Generic.IEnumerable{System.String},System.Char,System.StringComparer)">
             <summary>
             Converts an IEnumerable of strings to a tree node structure
             </summary>
@@ -19,7 +19,7 @@
             <param name="comparer">The string comparer to use when testing the path for equality</param>
             <returns>A tree node structure of the original IEnumerable</returns>
         </member>
-        <member name="M:Penguin.Shared.Objects.Extensions.IEnumerableExtensions.ToTree``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.String},System.Char,System.StringComparer)">
+        <member name="M:Penguin.Shared.Extensions.IEnumerableExtensions.ToTree``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.String},System.Char,System.StringComparer)">
             <summary>
             Converts a generic object IEnumerable to a tree node structure
             </summary>
@@ -30,34 +30,13 @@
             <param name="comparer">The string comparer to use when testing the path for equality</param>
             <returns>A tree node structure of the original IEnumerable</returns>
         </member>
-        <member name="M:Penguin.Shared.Objects.Extensions.IRecursiveListExtensions.Flatten``1(``0)">
+        <member name="M:Penguin.Shared.Extensions.IRecursiveListExtensions.Flatten``1(``0)">
             <summary>
             Flattens an IRecursive list
             </summary>
             <typeparam name="T">Any type</typeparam>
             <param name="target">The list to flatten</param>
             <returns>A flattened representation of the target recursive tree</returns>
-        </member>
-        <member name="T:Penguin.Shared.Objects.Interfaces.IRecursiveList`1">
-            <summary>
-            An interface to denote a recursive One-To-Many object structure
-            </summary>
-            <typeparam name="T"></typeparam>
-        </member>
-        <member name="P:Penguin.Shared.Objects.Interfaces.IRecursiveList`1.Children">
-            <summary>
-            The child objects of the parent type
-            </summary>
-        </member>
-        <member name="P:Penguin.Shared.Objects.Interfaces.IRecursiveList`1.Parent">
-            <summary>
-            The optional parent of this node
-            </summary>
-        </member>
-        <member name="T:Penguin.Shared.Objects.TFE">
-            <summary>
-            A simple True/False/Error object
-            </summary>
         </member>
         <member name="T:Penguin.Shared.Helpers.ConfigurationHelper">
             <summary>
@@ -73,7 +52,7 @@
         </member>
         <member name="F:Penguin.Shared.Helpers.ConfigurationHelper.RootDirectory">
             <summary>
-            The directory that should be searched for the ocnfiguration files 
+            The directory that should be searched for the ocnfiguration files
             </summary>
         </member>
         <member name="M:Penguin.Shared.Helpers.ConfigurationHelper.Exists``1">
@@ -130,6 +109,27 @@
             <param name="toSave">The configuration to save</param>
             <param name="path">Optional path to save the file to</param>
             <returns>True if a file already exists. Will always return true if saved from a load, because load creates the default object</returns>
+        </member>
+        <member name="T:Penguin.Shared.Interfaces.IRecursiveList`1">
+            <summary>
+            An interface to denote a recursive One-To-Many object structure
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Penguin.Shared.Interfaces.IRecursiveList`1.Children">
+            <summary>
+            The child objects of the parent type
+            </summary>
+        </member>
+        <member name="P:Penguin.Shared.Interfaces.IRecursiveList`1.Parent">
+            <summary>
+            The optional parent of this node
+            </summary>
+        </member>
+        <member name="T:Penguin.Shared.TFE">
+            <summary>
+            A simple True/False/Error object
+            </summary>
         </member>
         <member name="T:Penguin.Shared.TreeNode`1">
             <summary>
