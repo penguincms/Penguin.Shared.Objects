@@ -16,7 +16,7 @@ namespace Penguin.Shared
         /// <summary>
         /// The nodes that reside beneath this node
         /// </summary>
-        public List<TreeNode<T>> Children { get; set; }
+        public IList<TreeNode<T>> Children { get; set; }
 
         /// <summary>
         /// The character used to delimit nodes on the path
@@ -222,7 +222,7 @@ namespace Penguin.Shared
         /// Returns a list of tree nodes leading to this node, from trunk to leaf
         /// </summary>
         /// <returns>A list of tree nodes leading to this node, from trunk to leaf</returns>
-        public List<TreeNode<T>> GetBranch()
+        public IList<TreeNode<T>> GetBranch()
         {
             List<TreeNode<T>> treeNodes = new();
 
