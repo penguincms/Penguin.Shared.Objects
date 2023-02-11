@@ -4,6 +4,7 @@
     {
         private readonly object numLock = new();
         private long value;
+
         public long Next => Increment();
 
         public static implicit operator Counter(long i)
